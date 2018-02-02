@@ -1,5 +1,3 @@
-
-
 <div class="container">
   <h2>Step 1:</h2>
     <select ng-model="selectedInterest" ng-change="onSelectInterest()">
@@ -41,14 +39,19 @@
           </tr>
         </thead>
         <tbody>
-            <div ng-if="selectedInterest === 'simple'">
-                <tr ng-repeat="interest in interestDisplayArr">
-                    <td>{{ interest.period }}</td>
-                    <td>{{ interest.interestAmount  | number : 2 }}</td>
-                    <td>{{ interest.totalAmount | number : 2 }}</td>
-                </tr>
-            </div>
+          <tr ng-repeat="interest in interestDisplayArr">
+              <td>{{ interest.period }}</td>
+              <td>{{ interest.interestAmount  | number : 2 }}</td>
+              <td>{{ interest.totalAmount | number : 2 }}</td>
+          </tr>
         </tbody>
+        <tfoot>
+          <tr style="font-weight: bold;">
+            <td>Sum: </td>
+            <td>{{ interestSum | number : 2}}</td>
+            <td>{{ totalSum | number : 2 }}</td>
+          </tr>
+        </tfoot>
         </table>
     </div>
 </div>

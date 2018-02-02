@@ -1,9 +1,11 @@
-angularApp.controller('portfolioController', ['$scope', 'projectData', function($scope, projectData) {
+angularApp.controller('calculatorController', ['$scope', 'projectData', function($scope, projectData) {
   $scope.selectedInterest = '';
   $scope.projectData = projectData.data;
   $scope.showTable = false;
   $scope.interest;
   $scope.interestDisplayArr = [];
+  $scope.interestSum;
+  $scope.totalSum;
 
   $scope.onSelectInterest = (e) => {
     $scope.interest = Object.assign({}, projectData.interest);
@@ -14,15 +16,25 @@ angularApp.controller('portfolioController', ['$scope', 'projectData', function(
     } else {
       makeCompoundInterestArr($scope.interest);
     }
+    calculateTotals($scope.interestDisplayArr);
+    console.log($scope.interestSum, $scope.totalSum);
     $scope.showTable = true;
   }
+
   $scope.reset = () => {
     // discard old object by copying new object
     $scope.interest = Object.assign({}, projectData.interest);
     $scope.showTable = false;
     $scope.interestDisplayArr = [];
   }
-  
+
+  function calculateTotals (interestArr) {
+    $scope.interestSum = 0;
+    $scope.totalSum = 0;
+    $scope.interestSum = interestArr.reduce((acc, curr) => acc + curr.interestAmount, 0);
+    $scope.totalSum = interestArr.reduce((acc, curr) => acc + curr.totalAmount, 0);
+  }
+
   function makeSimpleInterestArr(interestObj) {
     $scope.interestDisplayArr = [];
     const timeSpan = Number(interestObj.timePeriod);
@@ -30,7 +42,7 @@ angularApp.controller('portfolioController', ['$scope', 'projectData', function(
     const interestRate = Number(interestObj.rate) / 100;
     const totalInterest = principal * interestRate;
 
-    for (let i = 0; i <= timeSpan; i++) {
+    for (let i = 1; i <= timeSpan; i++) {
       $scope.interestDisplayArr.push({
         period: i,
         totalAmount: projectData.calculateSimpleAmount(principal, interestRate, i),
@@ -47,12 +59,13 @@ angularApp.controller('portfolioController', ['$scope', 'projectData', function(
     const interestRate = Number(interestObj.rate);
     const compoundFrequency = Number(interestObj.compoundFrequency);
     
-    for (let i = 0; i <= timeSpan; i++) {
+    for (let i = 1; i <= timeSpan; i++) {
+      console.log('Compound Interest: ', $scope.interestDisplayArr, i);
       var totalAmount = 0;
-      var previousAmount = 0
-      if (i > 0) {
-        totalAmount = projectData.calculateCompoundAmount(principal, interestRate, i, compoundFrequency);
-        previousAmount = $scope.interestDisplayArr[i - 1].totalAmount;
+      var previousAmount = principal
+      totalAmount = projectData.calculateCompoundAmount(principal, interestRate, i, compoundFrequency);
+      if (i > 1) {
+        previousAmount = $scope.interestDisplayArr[i - 2].totalAmount;
       }
       $scope.interestDisplayArr.push({
         period: i,
@@ -60,7 +73,6 @@ angularApp.controller('portfolioController', ['$scope', 'projectData', function(
         interestAmount: (totalAmount - previousAmount), 
       });
     }
-    console.log('Compound Interest: ', $scope.interestDisplayArr);
   }
 
 }]);;

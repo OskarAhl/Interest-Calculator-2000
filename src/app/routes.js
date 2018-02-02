@@ -1,12 +1,12 @@
 angularApp.config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/portfolio')
+    $urlRouterProvider.otherwise('/calculator')
 
     $stateProvider
 
       .state('home', {
-        url:'/portfolio',
-        templateUrl: 'app/portfolio/portfolio.html',
-        controller: 'portfolioController'
+        url:'/calculator',
+        templateUrl: 'app/calculator/calculator.html',
+        controller: 'calculatorController'
       })
 });
