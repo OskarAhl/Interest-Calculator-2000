@@ -3,7 +3,7 @@
   <div class="row" style="margin-top:20px">
     <div class="col-md-12">
       <h3>Step 1: Choose Type of Interest</h3>
-      <select ng-model="selectedInterest" ng-change="onSelectInterest()">
+      <select ng-model="selectedInterest" ng-change="onSelectInterest()" class="custom-select" style="max-width:250px">
         <option value="">Select Interest</option>
         <option value="simple">Simple</option>
         <option value="compound">Compound</option>
@@ -41,7 +41,7 @@
 
             <div ng-if="selectedInterest === 'compound'">
               <label>Interest Frequency: </label>
-              <select ng-model="interest.compoundFrequency" required class="form-control">
+              <select style="max-width:193px;" ng-model="interest.compoundFrequency" required class="form-control">
                   <option value="">Select Frequency</option>
                   <option value="12">Monthly</option>
                   <option value="2">Half-yearly</option>
