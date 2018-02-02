@@ -1,4 +1,4 @@
-angularApp.service('projectData', function($http) {
+angularApp.service('calculatorService', function($http) {
   this.interestProto = {
     principal: '',
     rate: '',

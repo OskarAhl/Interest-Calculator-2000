@@ -1,6 +1,5 @@
-angularApp.controller('calculatorController', ['$scope', 'projectData', function($scope, projectData) {
+angularApp.controller('calculatorController', ['$scope', 'calculatorService', function($scope, calculatorService) {
   $scope.selectedInterest = '';
-  $scope.projectData = projectData.data;
   $scope.showTable = false;
   $scope.interest;
   $scope.interestDisplayArr = [];
@@ -10,7 +9,8 @@ angularApp.controller('calculatorController', ['$scope', 'projectData', function
   $scope.timePeriodPattern = /^([0-9]|[1-9][0-9]|100)$/;
 
   $scope.onSelectInterest = (e) => {
-    $scope.interest = Object.assign({}, projectData.interest);
+    $scope.reset();
+    $scope.interest = Object.assign({}, calculatorService.interest);
   }
   $scope.onSubmitForm = () => {
     if ($scope.selectedInterest === 'simple') {
@@ -24,8 +24,7 @@ angularApp.controller('calculatorController', ['$scope', 'projectData', function
   }
 
   $scope.reset = () => {
-    // discard old object by copying new object
-    $scope.interest = Object.assign({}, projectData.interest);
+    $scope.interest = { principal: '', rate: '', timePeriod: '', compoundFrequency: '' };
     $scope.showTable = false;
     $scope.interestDisplayArr = [];
   }
@@ -47,7 +46,7 @@ angularApp.controller('calculatorController', ['$scope', 'projectData', function
     for (let i = 1; i <= timeSpan; i++) {
       $scope.interestDisplayArr.push({
         period: i,
-        totalAmount: projectData.calculateSimpleAmount(principal, interestRate, i),
+        totalAmount: calculatorService.calculateSimpleAmount(principal, interestRate, i),
         interestAmount: totalInterest
       });
     }
@@ -62,10 +61,9 @@ angularApp.controller('calculatorController', ['$scope', 'projectData', function
     const compoundFrequency = Number(interestObj.compoundFrequency);
     
     for (let i = 1; i <= timeSpan; i++) {
-      console.log('Compound Interest: ', $scope.interestDisplayArr, i);
       var totalAmount = 0;
       var previousAmount = principal
-      totalAmount = projectData.calculateCompoundAmount(principal, interestRate, i, compoundFrequency);
+      totalAmount = calculatorService.calculateCompoundAmount(principal, interestRate, i, compoundFrequency);
       if (i > 1) {
         previousAmount = $scope.interestDisplayArr[i - 2].totalAmount;
       }

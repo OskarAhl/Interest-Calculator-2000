@@ -1,6 +1,6 @@
 <div class="container">
   
-  <div class="row">
+  <div class="row" style="margin-top:20px">
     <div class="col-md-12">
       <h3>Step 1: Choose Type of Interest</h3>
       <select ng-model="selectedInterest" ng-change="onSelectInterest()">
@@ -13,9 +13,9 @@
     
   <!-- Information Form -->
   <!-- Text inputs for regex pattern validation -->
-  <div class="row">
+  <div class="row" style="margin-top:20px">
     <div class="col-md-12">
-      <div ng-if="selectedInterest" style="margin-top:20px" ng-submit="onSubmitForm(interest)">
+      <div ng-if="selectedInterest"  ng-submit="onSubmitForm(interest)">
           <h3>Step 2: Fill in information</h3>
           <form novalidate class="simple-form" name="interestForm">
             
@@ -25,22 +25,23 @@
                 type="text" 
                 ng-model="interest.principal" 
                 name= "interest.principal" 
+                class="form-control"
                 required />
             </label><br />
         
             <label>Rate of interest (%):
-              <input type="text" ng-model="interest.rate" ng-pattern="numberPattern" required/>
+              <input type="text" ng-model="interest.rate" ng-pattern="numberPattern" class="form-control" required/>
             </label>
             <br />
 
             <label>Years: 
-              <input type="text" ng-model="interest.timePeriod" ng-pattern="timePeriodPattern" required/>
+              <input type="text" ng-model="interest.timePeriod" ng-pattern="timePeriodPattern" class="form-control" required/>
             </label>
             <br />
 
             <div ng-if="selectedInterest === 'compound'">
               <label>Interest Frequency: </label>
-              <select ng-model="interest.compoundFrequency" required>
+              <select ng-model="interest.compoundFrequency" required class="form-control">
                   <option value="">Select Frequency</option>
                   <option value="12">Monthly</option>
                   <option value="2">Half-yearly</option>
@@ -49,7 +50,7 @@
               <br />
             </div>
 
-            <input type="button" class="btn btn-warning" ng-click="reset()" value="Reset" />
+            <input type="button" class="btn btn-warning" style="color:white" ng-click="reset()" value="Reset" />
             <input type="submit" class="btn btn-success" ng-disabled="interestForm.$invalid" />
           </form>
       </div>
@@ -57,11 +58,11 @@
   </div>
 
   <!-- Table with amounts: -->
-  <div class="row">
+  <div class="row" style="margin-top:20px">
     <div class="col-md-12">
-      <div  style="margin-top:20px" ng-if="showTable">
+      <div ng-if="showTable">
         <h3>Results: </h3>
-        <table>
+        <table class="table">
           <thead>
             <tr>
               <th>Year</th>
