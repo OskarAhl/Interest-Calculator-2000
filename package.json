@@ -1,7 +1,7 @@
 {
-  "name": "oskarportfolio",
+  "name": "interestcalculator2000",
   "version": "1.0.0",
-  "description": "Oskar's Portfolio Site",
+  "description": "Automate your interest calculations",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
