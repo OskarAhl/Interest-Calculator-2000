@@ -2,63 +2,52 @@
 
 <div class="container">
   <h2>Step 1:</h2>
-    <!-- <div class="row" id="portfolioItems">
-      <div class="col-lg-4 col-sm-6 " ng-repeat="info in projectData | orderBy:'name'">
-        <div class="thumbnail item">
-          <div class="hovereffect">
-            <img class="img-responsive" src="{{ info.pic }}">
-            <div class="overlay">
-              <h2>{{ info.overlay }}</h2>
-              <a href="{{ info.play }}" target="blank">Check it out</a>
-            </div>
-            </div>
-            <span>
-              <strong><a href="{{ info.play }}" target="blank"> {{ info.name }}</a></strong> {{ info.text }}
-                <br>
-                <strong><a href="{{ info.code }}" target="blank">Check out the code: </a></strong> {{ info.codetext }}
-            </span>
-        </div>
-    </div> -->
     <select ng-model="selectedInterest" ng-change="onSelectInterest()">
       <option value="">Select Interest</option>
       <option value="simple">Simple</option>
       <option value="compound">Compound</option>
     </select>
 
-    <div ng-if="showForm" style="margin-top:20px" ng-submit="onSubmitForm(interest)">
+    <div ng-if="selectedInterest" style="margin-top:20px" ng-submit="onSubmitForm(interest)">
         <h2>Step 2:</h2>
         <form novalidate class="simple-form" name="interestForm">
             <label>Principal: <input type="text" ng-model="interest.principal" name= "interest.principal" required/></label><br />
             <label>Rate of interest: (%) <input type="text" ng-model="interest.rate"  required/></label><br />
             <label>Years: <input type="text" ng-model="interest.timePeriod" required/></label><br />
-            
-            <label>Compound Freq: </label>
-            <select ng-model="interest.compoundFreq" required>
-                <option value="">Select Frequency</option>
-                <option value="monthly">Monthly</option>
-                <option value="halfYearly">Half-yearly</option>
-                <option value="yearly">Yearly</option>
-              </select>
-            <br />
-            
+
+            <div ng-if="selectedInterest === 'compound'">
+              <label>Interest Frequency: </label>
+              <select ng-model="interest.compoundFrequency" required>
+                  <option value="">Select Frequency</option>
+                  <option value="12">Monthly</option>
+                  <option value="2">Half-yearly</option>
+                  <option value="1">Yearly</option>
+                </select>
+              <br />
+            </div>
+
             <input type="button" ng-click="reset()" value="Reset" />
             <input type="submit" ng-disabled="interestForm.$invalid" />
           </form>
     </div>
-    <div  style="margin-top:20px">
+    <div  style="margin-top:20px" ng-if="showTable">
       <h2>Results: </h2>
       <table>
         <thead>
           <tr>
             <th>Year</th>
-            <th>Amount</th>
+            <th>Interest</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>100</td>
-            </tr>
+            <div ng-if="selectedInterest === 'simple'">
+                <tr ng-repeat="interest in interestDisplayArr">
+                    <td>{{ interest.period }}</td>
+                    <td>{{ interest.interestAmount  | number : 2 }}</td>
+                    <td>{{ interest.totalAmount | number : 2 }}</td>
+                </tr>
+            </div>
         </tbody>
         </table>
     </div>

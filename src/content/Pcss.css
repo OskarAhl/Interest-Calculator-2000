@@ -1,7 +1,5 @@
 body {
 	padding-top: 50px;
-	/*background: #f7f7f7;*/
-	background: #f9f9f9;
 }
 
 .navbar-inverse {
@@ -19,13 +17,6 @@ body {
      font-family: 'Roboto', sans-serif;
      letter-spacing: 2px;
      font-weight: 300;
-}
-
-.navbar-inverse .navbar-brand:hover {
-     color: #ff60f4;
-}
-.navbar-inverse .navbar-nav>li> a:hover {
-    color: #ff60f4;
 }
 
 span {
