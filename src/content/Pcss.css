@@ -1,0 +1,41 @@
+body {
+	padding-top: 50px;
+	/*background: #f7f7f7;*/
+	background: #f9f9f9;
+}
+
+.navbar-inverse {
+	background: #000;
+}
+
+.navbar-inverse .navbar-nav>li> a {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-weight: 300;
+}
+
+.navbar-inverse .navbar-brand {
+     color: white;
+     font-family: 'Roboto', sans-serif;
+     letter-spacing: 2px;
+     font-weight: 300;
+}
+
+.navbar-inverse .navbar-brand:hover {
+     color: #ff60f4;
+}
+.navbar-inverse .navbar-nav>li> a:hover {
+    color: #ff60f4;
+}
+
+span {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	color: black;
+}
+
+p {
+	font-size: 15px;
+	letter-spacing: 0.5px;
+}
+

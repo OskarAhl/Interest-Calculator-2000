@@ -1,0 +1,18 @@
+{
+  "name": "oskarportfolio",
+  "version": "1.0.0",
+  "description": "Oskar's Portfolio Site",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Oskar Ahlroth",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "expresss": "0.0.0"
+  },
+  "devDependencies": {}
+}

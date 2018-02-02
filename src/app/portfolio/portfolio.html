@@ -1,0 +1,59 @@
+
+
+<div class="container">
+  <h2>Step 1:</h2>
+    <!-- <div class="row" id="portfolioItems">
+      <div class="col-lg-4 col-sm-6 " ng-repeat="info in projectData | orderBy:'name'">
+        <div class="thumbnail item">
+          <div class="hovereffect">
+            <img class="img-responsive" src="{{ info.pic }}">
+            <div class="overlay">
+              <h2>{{ info.overlay }}</h2>
+              <a href="{{ info.play }}" target="blank">Check it out</a>
+            </div>
+            </div>
+            <span>
+              <strong><a href="{{ info.play }}" target="blank"> {{ info.name }}</a></strong> {{ info.text }}
+                <br>
+                <strong><a href="{{ info.code }}" target="blank">Check out the code: </a></strong> {{ info.codetext }}
+            </span>
+        </div>
+    </div> -->
+    <select ng-model="selectedInterest" ng-change="onSelectInterest()">
+      <option value="">Select Interest</option>
+      <option value="simple">Simple</option>
+      <option value="compound">Compound</option>
+    </select>
+
+    <div ng-if="showForm" style="margin-top:20px" ng-submit="onSubmitForm(interest)">
+        <h2>Step 2:</h2>
+        <form novalidate class="simple-form" name="interestForm">
+            <label>Principal: <input type="text" ng-model="interest.principal" name= "interest.principal" required/></label><br />
+            <label>Rate of interest: (%) <input type="text" ng-model="interest.rate"  required/></label><br />
+            <label>Time period: <input type="text" ng-model="interest.timePeriod" required/></label><br />
+            
+            <label>Compound Freq: </label>
+            <select ng-model="interest.compoundFreq" required>
+                <option value="">Select Frequency</option>
+                <option value="monthly">Monthly</option>
+                <option value="halfYearly">Half-yearly</option>
+                <option value="yearly">Yearly</option>
+              </select>
+            <br />
+            
+            <input type="button" ng-click="reset()" value="Reset" />
+            <input type="submit" ng-disabled="interestForm.$invalid" />
+          </form>
+    </div>
+    <div ng-if="showTable" style="margin-top:20px">
+      <h2>Results: </h2>
+      <table>
+          <tr>
+            <th>2015</th>
+          </tr>
+          <tr>
+            <td>1000</td>
+          </tr>
+        </table>
+    </div>
+</div>
