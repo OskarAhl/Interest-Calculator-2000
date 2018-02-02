@@ -6,6 +6,8 @@ angularApp.controller('calculatorController', ['$scope', 'projectData', function
   $scope.interestDisplayArr = [];
   $scope.interestSum;
   $scope.totalSum;
+  $scope.numberPattern = /^\d{1,}(\.\d{0,2})?$/;
+  $scope.timePeriodPattern = /^([0-9]|[1-9][0-9]|100)$/;
 
   $scope.onSelectInterest = (e) => {
     $scope.interest = Object.assign({}, projectData.interest);

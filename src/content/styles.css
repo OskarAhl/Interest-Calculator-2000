@@ -1,32 +1,13 @@
-body {
-	padding-top: 50px;
-}
-
-.navbar-inverse {
+.navbar {
 	background: #000;
 }
 
-.navbar-inverse .navbar-nav>li> a {
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    font-weight: 300;
+input {
+    font-weight: normal;
+}
+input.ng-invalid-pattern {
+    border: 2px solid rgb(219, 123, 123);
 }
 
-.navbar-inverse .navbar-brand {
-     color: white;
-     font-family: 'Roboto', sans-serif;
-     letter-spacing: 2px;
-     font-weight: 300;
-}
 
-span {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	color: black;
-}
-
-p {
-	font-size: 15px;
-	letter-spacing: 0.5px;
-}
 
