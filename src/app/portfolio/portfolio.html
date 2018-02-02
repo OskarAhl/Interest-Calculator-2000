@@ -30,7 +30,7 @@
         <form novalidate class="simple-form" name="interestForm">
             <label>Principal: <input type="text" ng-model="interest.principal" name= "interest.principal" required/></label><br />
             <label>Rate of interest: (%) <input type="text" ng-model="interest.rate"  required/></label><br />
-            <label>Time period: <input type="text" ng-model="interest.timePeriod" required/></label><br />
+            <label>Years: <input type="text" ng-model="interest.timePeriod" required/></label><br />
             
             <label>Compound Freq: </label>
             <select ng-model="interest.compoundFreq" required>
@@ -45,15 +45,21 @@
             <input type="submit" ng-disabled="interestForm.$invalid" />
           </form>
     </div>
-    <div ng-if="showTable" style="margin-top:20px">
+    <div  style="margin-top:20px">
       <h2>Results: </h2>
       <table>
+        <thead>
           <tr>
-            <th>2015</th>
+            <th>Year</th>
+            <th>Amount</th>
           </tr>
-          <tr>
-            <td>1000</td>
-          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>100</td>
+            </tr>
+        </tbody>
         </table>
     </div>
 </div>
