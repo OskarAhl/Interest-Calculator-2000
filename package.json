@@ -13,5 +13,13 @@
     "express": "^4.15.2",
     "expresss": "0.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "angular": "^1.6.9",
+    "angular-mocks": "^1.6.9",
+    "angular-ui-router": "^1.0.3",
+    "jasmine-core": "^2.9.1",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1"
+  }
 }
