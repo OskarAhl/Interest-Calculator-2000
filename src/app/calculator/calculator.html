@@ -2,7 +2,7 @@
   
   <div class="row" style="margin-top:20px">
     <div class="col-md-12">
-      <h3>Step 1: Choose Type of Interest</h3>
+      <h3>Step 1: Choose type of interest</h3>
       <select ng-model="selectedInterest" ng-change="onSelectInterest()" class="custom-select" style="max-width:250px">
         <option value="">Select Interest</option>
         <option value="simple">Simple</option>
@@ -16,7 +16,7 @@
   <div class="row" style="margin-top:20px">
     <div class="col-md-12">
       <div ng-if="selectedInterest"  ng-submit="onSubmitForm(interest)">
-          <h3>Step 2: Fill in information</h3>
+          <h3>Step 2: Fill in the necessary information</h3>
           <form novalidate class="simple-form" name="interestForm">
             
             <label>Principal: 
@@ -61,7 +61,7 @@
   <div class="row" style="margin-top:20px">
     <div class="col-md-12">
       <div ng-if="showTable">
-        <h3>Results: </h3>
+        <h3>Results </h3>
         <table class="table">
           <thead>
             <tr>
