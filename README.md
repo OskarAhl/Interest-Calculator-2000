@@ -1,7 +1,6 @@
 # The Interest Calculator 2000 
 - Calculator for automating the calculation of simple and compound interest.
 - Created with Angularjs (+ node.js)
-- Created By Oskar Ahlroth for Umai.
 
 # Setup:
 1. Clone the repository
